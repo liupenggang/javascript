@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab 切换</title>
+    <style type="text/css">
+        body{padding-top: 30px;}
+        #head{overflow: hidden;margin:0 auto;width:640px;}
+        #head span{width: 126px;height:38px;line-height: 38px;text-align: center;border: 1px solid #000;float: left;font-size: 24px;cursor: pointer;}
+        #head span:hover{color:red;}
+        #content{width:598px;height: 238px;border: 1px solid #000;margin:0 auto;overflow:hidden;}
+        #content li{width:598px;height:238px;line-height: 238px;text-align: center;font-size: 60px;color:red;display: none;}
+        #head .select{background: #ccc}
+        #content .show{display: block;}
+    </style>
+</head>
+<body>
+    <h2 id="head">
+        <span class="select">标题1</span>
+        <span>标题2</span>
+        <span>标题3</span>
+        <span>标题4</span>
+        <span>标题5</span>
+    </h2>
+    <ul id="content">
+        <li class="show">内容1111</li>
+        <li>内容2222</li>
+        <li>内容3333</li>
+        <li>内容4444</li>
+        <li>内容5555</li>
+    </ul>
+</body>
+<script>
+    var spans = document.getElementsByTagName('span');
+    var lis = document.getElementsByTagName('li');
+    if(spans.length == lis.length){
+        for(var i=0;i<spans.length;i++){
+            spans[i].i = i;
+            spans[i].onclick = function () {
+                for(var j=0;j<spans.length;j++){
+                    spans[j].className = '';
+                    lis[j].className = '';
+                }
+                spans[this.i].className = 'select';
+                lis[this.i].className = 'show';
+            }
+        }
+    }else{
+        console.log('tab和tab内容length不同！')
+    }
+</script>
+</html>
